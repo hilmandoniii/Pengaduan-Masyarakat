@@ -1,0 +1,20 @@
+Cara buka website Pengaduan Masyarakat
+
+1. search localhost/projek-uas
+2. dikarenakan disini tidak ada form untuk login sebagai masyarakat maka dari itu dilanding page tidak disediakan form login
+3. jadi jika ingin login sebagai admin/petugas ketik localhost/projek-uas/Auth/LoginController
+4. akun login sebagai admin atau petugas
+
+	1. Akun Admin Pertama
+	username	: adminhil
+	password	: 654321
+	
+	2. Akun Admin Kedua
+	username	: adminhilmans
+	password	: 123456
+
+	3. Akun Petugas
+	username	: petugashilman
+	password	: 123456
+
+5. jika login sebagai admin, maka admin dapat tambah user (user admin dan user petugas)
