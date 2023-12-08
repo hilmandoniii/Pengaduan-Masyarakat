@@ -30,6 +30,7 @@
 									<input type="hidden" name="id" value="<?= $dp['id_pengaduan'] ?>">
 									<button class="btn btn-primary" name="selesai">Selesai</button>
 									<?= form_close(); ?>
+									
 								</div>
 							</div>
 						</div>

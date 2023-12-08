@@ -17,7 +17,7 @@ class TanggapanController extends CI_Controller
 		$this->load->model('Petugas_m');
 	}
 
-	// List all your items
+	// List all your itemss
 	public function index()
 	{
 		$data['judul'] = 'Semua Pengaduan';
@@ -121,7 +121,7 @@ class TanggapanController extends CI_Controller
 		endif;
 	}
 
-
+	//s
 	public function tambah_tanggapan()
 	{
 		$id_pengaduan = htmlspecialchars($this->input->post('id', true));
@@ -208,6 +208,7 @@ class TanggapanController extends CI_Controller
 		endif;
 	}
 
+	
 	// Fungsi Tanggapan Pengaduan Selesai
 	public function tanggapan_pengaduan_selesai()
 	{

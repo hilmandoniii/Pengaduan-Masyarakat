@@ -34,6 +34,58 @@
   <script src="<?= base_url() ?>assets/tmp-admin/js/dashboard.js"></script>
   <script src="<?= base_url() ?>assets/tmp-admin/js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
+
+  <!-- Page level plugins -->
+  <script src="<?= base_url() ?>assets/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?= base_url() ?>assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <script src="<?= base_url() ?>assets/demo/datatables-demo.js"></script>
+
+  <!-- export plugin -->
+  <script src="<?= base_url('assets/') ?>extra/jquery.dataTables.js" crossorigin="anonymous"></script>
+  <script src="<?= base_url('assets/') ?>extra/dataTables.bootstrap4.js" crossorigin="anonymous"></script>
+  <script src="<?= base_url('assets/') ?>extra/dataTables.buttons.min.js" crossorigin="anonymous"></script>
+  <script src="<?= base_url('assets/') ?>extra/buttons.print.min.js" crossorigin="anonymous"></script>
+  <script src="<?= base_url('assets/') ?>extra/jszip.min.js" crossorigin="anonymous"></script>
+  <script src="<?= base_url('assets/') ?>extra/pdfmake.min.js" crossorigin="anonymous"></script>
+  <script src="<?= base_url('assets/') ?>extra/vfs_fonts.js" crossorigin="anonymous"></script>
+  <script src="<?= base_url('assets/') ?>extra/buttons.html5.min.js" crossorigin="anonymous"></script>
+  <!-- script -->
+
+  <script type="text/javascript" class="init">
+    $(document).ready(function() {
+      $('#exampleLaporan').DataTable({
+        dom: 'Bfrtip',
+        buttons: [{
+            extend: 'print',
+            title: 'Data Pengaduan',
+            customize: function(win) {
+              $(win.document.body).find("")
+                .css('font-size', '10pt')
+                .append(
+                  '<img src="http://localhost/andi/aplikasi-pengaduan-masyarakat//assets/gambar/bantu_java_code_1.png" />'
+                );
+
+              $(win.document.body).find('table')
+                .addClass('compact')
+                .css('font-size', 'inherit');
+            }
+          },
+          {
+            extend: 'pdf',
+            orientation: 'portrait',
+            pageSize: 'LEGAL',
+            title: 'Data Pengaduan'
+          },
+          {
+            extend: 'excel',
+            title: 'Data Pengaduan'
+          }
+        ]
+      });
+    });
+  </script>
+
 </body>
 
 </html>

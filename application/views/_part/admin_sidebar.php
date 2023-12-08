@@ -47,6 +47,19 @@
            <?php endif; ?>
             <?php // end Tambah Akses Admin Petugas
             ?>
+
+            <?php // Tambah Akses Admin Petugas
+            ?>
+            <?php if ($this->session->userdata('level') == 'admin') : ?>
+          <li class="nav-item">
+            <a class="nav-link" href="<?= base_url('Admin/LaporanController'); ?>">
+              <i class="icon-book menu-icon"></i>
+              <span class="menu-title">Cetak Laporan</span>
+            </a>
+          </li>
+           <?php endif; ?>
+            <?php // end Tambah Akses Admin Petugas
+            ?>
           <li class="nav-item">
             <a class="nav-link" href="<?= base_url('Auth/LogoutController'); ?>">
               <i class="ti-power-off menu-icon"></i>

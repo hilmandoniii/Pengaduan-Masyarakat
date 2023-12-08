@@ -74,7 +74,7 @@
                             <i class="lni-baloon"></i>
                         </div>
                         <div class="services-content mt-30">
-                            <h4 class="services-title">Buat Pengaduan/Keluhan</h4>
+                            <h4 class="services-title">Buat Pengaduan</h4>
                             <p class="text">Lorem ipsum dolor sit amet,consetetur sadipscing elitr, seddiam nonu eirmod tempor invidunt labore.</p>
                         </div>
                     </div> <!-- single services -->
@@ -100,7 +100,7 @@
                             <i class="lni-bolt-alt"></i>
                         </div>
                         <div class="services-content mt-30">
-                            <h4 class="services-title">Cek Tanggapan Pengadu</h4>
+                            <h4 class="services-title">Cek Tanggapan</h4>
                             <p class="text">Lorem ipsum dolor sit amet,consetetur sadipscing elitr, seddiam nonu eirmod tempor invidunt labore.</p>
                         </div>
                     </div> <!-- single services -->

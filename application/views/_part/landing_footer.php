@@ -24,9 +24,9 @@
                     <div class="col-lg-4 col-md-6 col-sm-8 pt-5">
                         <div class="footer-about mt-50 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
                             <a class="logo" href="#">
-                                <img src="<?= base_url() ?>assets/images/logo.svg" alt="logo">
+                                <!-- <img src="<?= base_url() ?>assets/images/logo.svg" alt="logo"> -->
                             </a>
-                            <p class="text">Lorem ipsum dolor sit amet consetetur sadipscing elitr, sederfs diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.</p>
+                            <p class="text">LADUMAS Merupakan media informasi berbentuk website untuk masyarakat guna menyampaikan pengaduan atau keluhan kepada pemerintah setempat.</p>
                             <ul class="social">
                                 <li><a href="#"><i class="lni-facebook-filled"></i></a></li>
                                 <li><a href="#"><i class="lni-twitter-filled"></i></a></li>

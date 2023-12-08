@@ -130,5 +130,65 @@ class PetugasController extends CI_Controller
 		endif;
 	}
 
+	// Fungsi Edit Admin atau Petugas
+	public function edit($id)
+	{
+		// ID Petugas
+		$id_petugas = htmlspecialchars($id);
+
+		$cek_data = $this->db->get_where('petugas', ['id_petugas' => $id_petugas])->row_array();
+
+		$petugas = $this->db->get_where('petugas', ['username' => $this->session->userdata('username')])->row_array();
+
+		if ($petugas == TRUE) :
+			$data['user'] = $petugas;
+		endif;
+
+
+		if (!empty($cek_data)) :
+
+			$data['judul'] = 'Edit Admin/Petugas';
+			$data['petugas'] = $cek_data;
+
+			$this->form_validation->set_rules('level', 'Level', 'trim|required');
+			
+
+			if ($this->form_validation->run() == FALSE) :
+				$this->load->view('_part/admin_head',$data);
+				$this->load->view('_part/admin_navbar',$data);
+				$this->load->view('_part/admin_sidebar',$data);
+				$this->load->view('admin/edit_anggota',$data);
+				$this->load->view('_part/admin_footer');
+			else :
+					$params = [
+						'level'					=> htmlspecialchars($this->input->post('level', TRUE))
+					];
+
+					$resp = $this->db->update('petugas', $params, ['id_petugas' => $id_petugas]);
+
+					if ($resp) :
+						$this->session->set_flashdata('msg', '<div class="alert alert-primary" role="alert">
+					Akun petugas berhasil di edit
+					</div>');
+
+						redirect('Admin/PetugasController');
+					else :
+						$this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert">
+					Akun petugas gagal di edit!
+					</div>');
+
+						redirect('Admin/PetugasController');
+					endif;
+			endif;
+
+		else :
+			$this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert">
+				Data tidak ada
+				</div>');
+
+			redirect('Admin/PetugasController');
+		endif;
+	}
+
 
 }

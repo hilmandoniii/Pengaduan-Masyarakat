@@ -8,7 +8,7 @@
                   <h4 class="card-title">Semua Pengaduan</h4>
                   <?= $this->session->flashdata('msg'); ?>
                   <div class="table-responsive">
-                    <table class="table">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                       <thead>
                         <tr>
                           <th>No</th>
@@ -32,6 +32,7 @@
                             <?php if ($dp['username'] == $this->session->userdata('username')) : ?>
                               <small>Tidak ada aksi</small>
                             <?php else : ?>
+                                <a href="<?= base_url('Admin/PetugasController/edit/' . $dp['id_petugas']) ?>" class="badge badge-success"><i class="fas fa-trash"></i> Edit</a>
                                 <a href="<?= base_url('Admin/PetugasController/delete/' . $dp['id_petugas']) ?>" class="badge badge-danger"><i class="fas fa-trash"></i> Hapus</a>
                             <?php endif; ?>
                           </td>

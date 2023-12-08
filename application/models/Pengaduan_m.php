@@ -59,6 +59,7 @@ class Pengaduan_m extends CI_Model
 		$this->db->select('*');
 		$this->db->from($this->table);
 		$this->db->join('tanggapan', 'tanggapan.id_pengaduan = aduan.id_pengaduan', 'left');
+		$this->db->join('petugas', 'petugas.id_petugas = tanggapan.id_petugas', 'left');
 		return $this->db->get();
 	}
 

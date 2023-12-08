@@ -78,7 +78,7 @@ class PengaduanController extends CI_Controller
 						Terimakasih, laporan akan segera diproses!
 						</div>');
 
-					redirect('PengaduanController');
+					redirect('PengaduanController/cek_pengaduan');
 				else :
 					$this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert">
 						Laporan gagal dibuat!

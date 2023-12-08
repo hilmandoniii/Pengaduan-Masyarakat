@@ -20,6 +20,9 @@
   <link rel="stylesheet" href="<?= base_url() ?>assets/tmp-admin/css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="<?= base_url() ?>assets/tmp-admin/images/favicon.png" />
+
+   <!-- Custom styles for this page -->
+  <link href="<?= base_url() ?>assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 <body>
   <div class="container-scroller">
