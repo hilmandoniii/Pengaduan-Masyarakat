@@ -1,4 +1,4 @@
-<!-- partial -->
+<!-- partialss -->
       <div class="main-panel">        
         <div class="content-wrapper">
         	<?= $this->session->flashdata('msg'); ?>

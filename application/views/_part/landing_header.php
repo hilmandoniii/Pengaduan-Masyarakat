@@ -25,7 +25,10 @@
                                     </li>
                                     <li class="nav-item">
                                         <a class="page-scroll" href="#features">Layanan</a>
-                                    </li>                                    
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="page-scroll" href="#testimonial">Data Pengaduan</a>
+                                    </li>                                      
                                     <li class="nav-item">
                                         <a class="page-scroll" href="<?= base_url('PengaduanController/cek_pengaduan') ?>">Tanggapan Keluhan</a>
                                     </li>

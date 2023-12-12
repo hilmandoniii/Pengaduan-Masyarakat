@@ -78,6 +78,7 @@
                           <th>Tanggal Pengaduan</th>
                           <th>Judul Pengaduan</th>
                           <th>Status</th>
+                          <th>Aksi</th>
                           
                           
                         </tr>
@@ -106,6 +107,13 @@
                                 echo '-';
                               endif;
                             ?>
+                          </th>
+                          <th>
+                            <?php if ($dp['status'] == '0' or $dp['status'] == 'proses') : ?>
+                              <small>Tidak ada aksi</small>
+                            <?php else : ?>
+                            <a href="<?= base_url('Admin/TanggapanController/detail_tanggapan/' . $dp['id_pengaduan']) ?>" class="badge badge-primary">Lihat Detail</a>
+                            <?php endif; ?>
                           </th>
 
                           

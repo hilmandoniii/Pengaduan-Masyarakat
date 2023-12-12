@@ -35,44 +35,6 @@ class LoginController extends CI_Controller {
         }
 	}
 
-	// private function _login()
-    // {
-    //     $username = htmlspecialchars($this->input->post('username', true));
-    //     $password = $this->input->post('password', true);
-    //     $user = $this->db->get_where('petugas',['username' => $username])->row_array();
-    //     //jika usernya ada
-    //     if ($user == TRUE) {
-            
-    //         //cek password
-    //             if (password_verify($password, $user['password'])) {
-    //                 $data = [
-    //                 'username' => $user['username'],
-    //                 'level' => $user['level']
-    //                 ];
-
-    //                 $this->session->set_userdata($data);
-    //                 // cek level petugas
-    //                 if ($user['level'] == 'admin') {
-    //                 	return redirect('LandingController');
-    //                 } elseif ($user['level'] == 'petugas') {
-    //                 	return redirect('LandingController');
-    //                 } else {
-    //                 	return redirect('LandingController');
-    //                 }
-					
-
-	//             } else {
-	//                 $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-message" role="alert">Password salah!!</div>');
-	//                 redirect('Auth/LoginController');
-	//             }
-
-    //     } else {
-    //         $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-message" role="alert">Username tidak terdaftar!!</div>');
-    //         redirect('Auth/LoginController');
-    //     }
-
-    // }
-
 	private function cek_login()
 	{
 		// cek akun di table masyarakat dan petugas berdasarkan username

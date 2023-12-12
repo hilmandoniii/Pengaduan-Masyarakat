@@ -17,7 +17,7 @@ class TanggapanController extends CI_Controller
 		$this->load->model('Petugas_m');
 	}
 
-	// List all your itemss
+	// List all your itemsss
 	public function index()
 	{
 		$data['judul'] = 'Semua Pengaduan';
@@ -207,7 +207,6 @@ class TanggapanController extends CI_Controller
 			redirect('Admin/TanggapanController');
 		endif;
 	}
-
 	
 	// Fungsi Tanggapan Pengaduan Selesai
 	public function tanggapan_pengaduan_selesai()
@@ -266,6 +265,45 @@ class TanggapanController extends CI_Controller
 				</div>');
 
 			redirect('Admin/TanggapanController/tanggapan_proses');
+		endif;
+	}
+
+	public function detail_tanggapan($id)
+	{
+
+		$cek_data = $this->db->get_where('aduan', ['id_pengaduan' => htmlspecialchars($id)])->row_array();
+
+		$petugas = $this->db->get_where('petugas', ['username' => $this->session->userdata('username')])->row_array();
+
+		if ($petugas == TRUE) :
+			$data['user'] = $petugas;
+		endif;
+
+		if (!empty($cek_data)) :
+
+			$data['judul'] = 'Detail Pengaduan';
+
+			$data['data_pengaduan'] = $this->Pengaduan_m->data_detail_pengaduan_tanggapan(htmlspecialchars($id))->row_array();
+			if ($data['data_pengaduan']) :
+				$this->load->view('_part/admin_head',$data);
+				$this->load->view('_part/admin_navbar',$data);
+				$this->load->view('_part/admin_sidebar',$data);
+				$this->load->view('admin/detail_pengaduan',$data);
+				$this->load->view('_part/admin_footer');
+			else :
+				$this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert">
+					Data tidak ada
+					</div>');
+
+				redirect('Admin/TanggapanController');
+			endif;
+
+		else :
+			$this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert">
+				data tidak ada
+				</div>');
+
+			redirect('Admin/TanggapanController');
 		endif;
 	}
 

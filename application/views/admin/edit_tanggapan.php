@@ -9,26 +9,26 @@
           <div class="card col-md-12">
               <div class="row">          
                   <div class="col-md-4">
-                      <img src="<?= base_url() ?>assets/uploads/<?= $data_pengaduan['gambar'] ?>" class="card-img" alt="..." style="height: 100%;">
+                      <img src="<?= base_url() ?>assets/uploads/<?= $tanggapan['gambar'] ?>" class="card-img" alt="..." style="height: 100%;">
                   </div>
                   <div class="card-body col-md-8">
                       <table class="table table-borderless">
                           <tr>
                               <th>Tanggal Pengaduan</th>
                               <th>:</th>
-                              <th><?= $data_pengaduan['tgl_pengaduan'] ?></th>
+                              <th><?= $tanggapan['tgl_pengaduan'] ?></th>
                               </tr>
                           <tr>
                               <th>Status</th>
                               <th>:</th>
-                              <th><?= $data_pengaduan['status'] == 'proses' ? 'Sedang diproses' : ''; ?></th>
+                              <th><?= $tanggapan['status'] ?></th>
                           </tr>
                               <tr>
                               <th>Isi Pengaduan</th>
                               <th>:</th>
                           </tr>
                       </table>
-                          <h4 class="font-weight-bold" style="margin-left:2.8%;"><?= $data_pengaduan['isi_pengaduan'] ?></h4>
+                          <h4 class="font-weight-bold" style="margin-left:2.8%;"><?= $tanggapan['isi_pengaduan'] ?></h4>
                   </div> 
               </div>
               <div class="row">
@@ -37,7 +37,7 @@
                     <div class="card-body">
                       
                       <?= form_open('Admin/TanggapanController/edit_tanggapan'); ?>
-                        <input type="hidden" name="id" value="<?= $tanggapan['id_tanggapan']; ?>">
+                        <input type="hidden" name="id_pengaduan" value="<?= $tanggapan['id_pengaduan']; ?>">
 
                         <div class="form-group">
                           <label for="tanggapan" class="card-title">Tanggapan</label>

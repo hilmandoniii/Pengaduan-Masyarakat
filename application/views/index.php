@@ -108,6 +108,53 @@
             </div> <!-- row -->
         </div> <!-- container -->
     </section>
+
+    <section id="testimonial" class="testimonial-area pt-120">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="section-title text-center pb-40">
+                        <div class="line m-auto"></div>
+                        <h3 class="title">Data Pengaduan <br><span> Layanan Pengaduan Masyarakat</span></h3>
+                    </div> <!-- section title -->
+                </div>
+            </div> <!-- row -->
+            <div class="row justify-content-center">
+                <div class="col-lg-3 col-md-7 col-sm-8">
+                    <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <div class="services-content">
+                            <h2 class="services-title"><?= number_format($pengaduan) ?></h2><br>
+                            <h6 class="services-title">Pengaduan Masuk</h6>
+                        </div>
+                    </div> <!-- single services -->
+                </div>
+                <div class="col-lg-3 col-md-7 col-sm-8">
+                    <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <div class="services-content">
+                            <h2 class="services-title"><?= number_format($pengaduan_proses) ?></h2><br>
+                            <h6 class="services-title">Pengaduan di Proses</h6>
+                        </div>
+                    </div> <!-- single services -->
+                </div>
+                <div class="col-lg-3 col-md-7 col-sm-8">
+                    <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <div class="services-content">
+                            <h2 class="services-title"><?= number_format($pengaduan_tolak) ?></h2><br>
+                            <h6 class="services-title">Pengaduan di Tolak</h6>
+                        </div>
+                    </div> <!-- single services -->
+                </div>
+                <div class="col-lg-3 col-md-7 col-sm-8">
+                    <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <div class="services-content">
+                            <h2 class="services-title"><?= number_format($pengaduan_selesai) ?></h2><br>
+                            <h6 class="services-title">Pengaduan Selesai</h6>
+                        </div>
+                    </div> <!-- single services -->
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </section>
     
     <!--====== SERVICES PART ENDS ======-->
     

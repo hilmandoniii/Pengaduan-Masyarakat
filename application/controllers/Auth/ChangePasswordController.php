@@ -7,20 +7,8 @@ class ChangePasswordController extends CI_Controller {
 	{
 		parent::__construct();
 		//Load Dependencies
-		
+		is_logged_in();
 	}
-
-	// List all your items
-	// public function index()
-	// {
-	// 	$data['title'] = 'Profile';
-
-	// 	$this->load->view('_part/admin_head',$data);
-	// 	$this->load->view('_part/admin_navbar',$data);
-	// 	$this->load->view('_part/admin_sidebar',$data);
-	// 	$this->load->view('admin/ganti_password');
-	// 	$this->load->view('_part/admin_footer');
-	// }
 
 	public function index()
 	{
