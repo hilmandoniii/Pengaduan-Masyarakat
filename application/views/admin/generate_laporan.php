@@ -38,6 +38,7 @@
                       <thead>
                         <tr>
                           
+                          <th>NIK</th>
                           <th>Nama</th>
                           <th>E-mail</th>
                           <th>Tanggal Pengaduan</th>
@@ -54,7 +55,7 @@
                           
                           foreach ($data_pengaduan as $dp) { ?>
                         <tr>
-                          
+                          <th><?= $dp['nik']; ?></th>
                           <th><?= $dp['nama']; ?></th>
                           <th><?= $dp['email']; ?></th>
                           <th><?= $dp['tgl_pengaduan']; ?></th>
@@ -74,8 +75,22 @@
                               endif;
                             ?>
                           </th>
-                          <th><?= $dp['tgl_tanggapan']; ?></th>
-                          <th><?= $dp['nama_petugas']; ?></th>
+
+                          <th>
+                            <?php if ($dp['status'] == '0') : ?>
+                              <small>Belum di Tanggapi</small>
+                            <?php else : ?>
+                              <?= $dp['tgl_tanggapan']; ?>
+                            <?php endif; ?>
+                              
+                          </th>
+                          <th>
+                            <?php if ($dp['status'] == '0') : ?>
+                              <small>Belum di Tanggapi</small>
+                            <?php else : ?>
+                              <?= $dp['nama_petugas']; ?>
+                            <?php endif; ?>
+                          </th>
                           
                           
                         </tr>

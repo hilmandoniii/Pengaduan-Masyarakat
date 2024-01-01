@@ -114,7 +114,7 @@ class LoginController extends CI_Controller {
 
         $this->form_validation->set_rules('password2', 'Repeat Password', 'required|trim|matches[password1]');
         if ($this->form_validation->run() == false) {
-            $data['judul'] = 'Registrasi Member';
+            $data['judul'] = 'Registrasi Sebagai Petugas';
             $this->load->view('registrasi', $data);
         } else {
             $username = $this->input->post('username', true);
@@ -123,7 +123,7 @@ class LoginController extends CI_Controller {
                 'username' => htmlspecialchars($username),
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
                 'foto_profile'	=> 'user.png',
-                'level' => 'admin'
+                'level' => 'petugas'
             ];
 
             $this->Petugas_m->create($data); 

@@ -35,7 +35,7 @@
                             <div class="line"></div>
                             <h3 class="title"><span>Apa itu, </span> Layanan Pengaduan Masyarakat ?</h3>
                         </div> <!-- section title -->
-                        <p class="text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, seiam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing.</p>
+                        <p class="text">Layanan Pengaduan Masyarakat (LADUMAS) berbasis website adalah suatu mekanisme atau platform digital yang dirancang untuk memfasilitasi proses pengaduan dan interaksi antara masyarakat dengan pihak berwenang. LADUMAS memberikan saluran transparan dan cepat bagi masyarakat untuk menyuarakan ketidakpuasan atau memberikan masukan terkait dengan berbagai masalah, dan seringkali melibatkan proses penyelidikan dan tanggapan yang sesuai untuk menanggapi setiap pengaduan.</p>
                         <a href="#" class="main-btn">Try it Free</a>
                     </div> <!-- about content -->
                 </div>
@@ -75,7 +75,7 @@
                         </div>
                         <div class="services-content mt-30">
                             <h4 class="services-title">Buat Pengaduan</h4>
-                            <p class="text">Lorem ipsum dolor sit amet,consetetur sadipscing elitr, seddiam nonu eirmod tempor invidunt labore.</p>
+                            <p class="text">Buat pengaduan pada form pengaduan, silahkan diisi sesuai dengan formnya. Jangan isi sembarang!</p>
                         </div>
                     </div> <!-- single services -->
                 </div>
@@ -88,7 +88,7 @@
                         </div>
                         <div class="services-content mt-30">
                             <h4 class="services-title">Cek Status Pengaduan</h4>
-                            <p class="text">Lorem ipsum dolor sit amet,consetetur sadipscing elitr, seddiam nonu eirmod tempor invidunt labore.</p>
+                            <p class="text">Masyarakat yang telah mengadu dapat mengecek status pengaduan-nya pada form tanggapan keluhan</p>
                         </div>
                     </div> <!-- single services -->
                 </div>
@@ -101,7 +101,7 @@
                         </div>
                         <div class="services-content mt-30">
                             <h4 class="services-title">Cek Tanggapan</h4>
-                            <p class="text">Lorem ipsum dolor sit amet,consetetur sadipscing elitr, seddiam nonu eirmod tempor invidunt labore.</p>
+                            <p class="text">Jika status pengaduan anda telah ditanggapi, silahkan ke menu tanggapan keluhan untuk mengecek tanggapan-nya.</p>
                         </div>
                     </div> <!-- single services -->
                 </div>

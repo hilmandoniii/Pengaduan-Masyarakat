@@ -2,10 +2,6 @@
       <div class="main-panel">        
         <div class="content-wrapper">
         	<?= $this->session->flashdata('msg'); ?>
-					
-
-        	<div class="row no-gutters">
-
 					<?php if (!empty($data_pengaduan)) : ?>
 					<div class="row">
             <div class="col-lg-12 grid-margin stretch-card">
@@ -32,10 +28,6 @@
                           <th><?= $dp['tgl_pengaduan']; ?></th>
                           <th><?= $dp['judul_pengaduan']; ?></th>
                           <th><h5 class="badge badge-success"><?= $dp['status']; ?></h5></th>
-                          
-
-                          
-                          
                         </tr>
                         <?php } ?>
                       </tbody>

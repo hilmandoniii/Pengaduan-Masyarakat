@@ -49,6 +49,7 @@ class Pengaduan_m extends CI_Model
 		return $this->db->get();
 	}
 
+
 	public function data_pengaduan_masyarakat_id($id)
 	{
 		return $this->db->get_where($this->table, ['id_pengaduan' => $id]);
@@ -75,4 +76,13 @@ class Pengaduan_m extends CI_Model
 		return $this->db->get();
 	}
 
+
+	public function proses_tanggapan()
+	{
+		$this->db->select('aduan.*,tanggapan.tanggapan, tanggapan.tgl_tanggapan');
+		$this->db->from($this->table);
+		$this->db->join('tanggapan', 'tanggapan.id_pengaduan = aduan.id_pengaduan', 'inner');
+		$this->db->where('status', 'proses');
+		return $this->db->get();
+	}
 }

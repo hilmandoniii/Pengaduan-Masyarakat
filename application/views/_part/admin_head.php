@@ -19,7 +19,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="<?= base_url() ?>assets/tmp-admin/css/vertical-layout-light/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="<?= base_url() ?>assets/tmp-admin/images/favicon.png" />
+  <link rel="shortcut icon" href="<?= base_url() ?>assets/images/favicon.png" type="image/png">
 
    <!-- Custom styles for this page -->
   <link href="<?= base_url() ?>assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">

@@ -125,51 +125,83 @@
                         <div class="subscribe-area wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
                             <div class="row">
                                 <?= $this->session->flashdata('msg'); ?>
-                                <div class="col-lg-12">
-                                        <?= form_open_multipart('PengaduanController'); ?>
-                                            <div class="row">
-                                                <div class="col-md-12 mb-3">
-                                                    <input type="text" id="nik" class="form-control" name="nik" placeholder="Masukan NIK..." value="<?= set_value('nik') ?>">
-                                                    <?= form_error('nik','<small class="text-danger pl-3">', '</small>'); ?>
-                                                </div>
-                                                <div class="col-md-12 mb-3">
-                                                    <input type="text" id="nama" class="form-control" name="nama" placeholder="Masukan Nama..." value="<?= set_value('nama') ?>">
-                                                    <?= form_error('nama','<small class="text-danger pl-3">', '</small>'); ?>
-                                                </div>
-                                                <div class="col-md-6 mb-3">
-                                                    <input type="email" id="email" class="form-control" name="email" placeholder="Masukan E-mail..." value="<?= set_value('email') ?>">
-                                                    <?= form_error('email','<small class="text-danger pl-3">', '</small>'); ?>
-                                                </div>
-                                                <div class="col-md-6 mb-3">
-                                                    <input type="text" id="telp" class="form-control" name="telp" placeholder="Masukan No Telepon..." value="<?= set_value('telp') ?>">
-                                                    <?= form_error('telp','<small class="text-danger pl-3">', '</small>'); ?>
-                                                </div>
-                                                <div class="col-md-12 mb-3">
-                                                    <input type="text" id="judul_laporan" class="form-control" name="judul_laporan" placeholder="Masukan Judul Laporan..." value="<?= set_value('judul_laporan') ?>">
-                                                    <?= form_error('judul_laporan','<small class="text-danger pl-3">', '</small>'); ?>
-                                                </div>
-                                                <div class="col-md-12 mb-3">
-                                                    <textarea name="isi_laporan" class="form-control" rows="10" placeholder="Isi Pengaduan..."></textarea>
-                                                    <small class="form-text text-muted">Isi lengkap pengaduan dengan menyertakan alamat lengkap pengadu</small>
-                                                    <?= form_error('isi_laporan','<small class="text-danger pl-3">', '</small>'); ?>
-                                                </div>
-                                                <div class="col-md-12 mb-3">
-                                                    <div class="custom-file">
-                                                      <input type="file" class="custom-file-input" id="foto" name="foto">
-                                                      <label class="custom-file-label" for="foto">Choose file</label>
-                                                      <small class="form-text text-muted">Hanya JPG|PNG|JPEG yang dapat diupload, max size 3 MB</small>
-                                                      <?= form_error('foto','<small class="text-danger pl-3">', '</small>'); ?>
-                                                    </div> 
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                                </div>
-                                                
+                                <h4 class="card-title">Detail Pengaduan Masyarakat</h4>
+                                <div class="col-md-12">
+                                    <div class="card-body">
+                                      <div class="table-responsive">
+                                        <table class="table" width="100%" cellspacing="0">
+                                          <thead>
+                                            <tr>
+                                              <td>Nama Pengadu</td>
+                                              <td>:</td>
+                                              <td><?= $data_pengaduan['nama'] ?></td>
+                                            </tr>
+                                            <tr>
+                                              <td>Email Pengadu</td>
+                                              <td>:</td>
+                                              <td><?= $data_pengaduan['email'] ?></td>
+                                            </tr>
+                                            <tr>
+                                              <td>Judul Pengaduan</td>
+                                              <td>:</td>
+                                              <td><?= $data_pengaduan['judul_pengaduan'] ?></td>
+                                            </tr>
+                                            <tr>
+                                              <td>Tanggal Pengaduan</td>
+                                              <td>:</td>
+                                              <td><?= $data_pengaduan['tgl_pengaduan'] ?></td>
+                                            </tr>
 
-                                            </div>
-                                        <?php echo form_close(); ?>
-                                </div>
+                                            <tr>
+                                              <td>Status Pengaduan</td>
+                                              <td>:</td>
+                                              <td>
+                                                <?php
+                                                  if ($data_pengaduan['status'] == '0') :
+                                                    echo '<span class="badge badge-secondary">Sedang di verifikasi</span>';
+                                                  elseif ($data_pengaduan['status'] == 'proses') :
+                                                    echo '<span class="badge badge-primary">Sedang di proses</span>';
+                                                  elseif ($data_pengaduan['status'] == 'selesai') :
+                                                    echo '<span class="badge badge-success">Selesai di kerjakan</span>';
+                                                  elseif ($data_pengaduan['status'] == 'tolak') :
+                                                    echo '<span class="badge badge-danger">Pengaduan di tolak</span>';
+                                                  else :
+                                                    echo '-';
+                                                  endif;
+                                                ?>
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td>Tanggapan</td>
+                                              <td>:</td>
+                                              <td><?= $data_pengaduan['tanggapan'] ?></td>
+                                            </tr>
+                                            <tr>
+                                              <td>Tanggal Tanggapan</td>
+                                              <td>:</td>
+                                              <td><?= $data_pengaduan['tgl_tanggapan'] ?></td>
+                                            </tr>
+                                          </thead>
+                                        </table>
+                                      </div>
+                                    </div>
+                              </div>
                             </div> <!-- row -->
+                            <div class="row justify-content-center">
+                              <div class="col-md-6">
+                                  <img src="<?= base_url() ?>assets/uploads/<?= $data_pengaduan['gambar'] ?>" class="card-img-top h-100 mb-2">
+                                  <h4 class="font-weight-bold font-italic text-center" style="font-size: 100%;"><span class="text-dark">Foto Pengaduan</span></h4>
+                              </div>
+                              <div class="col-md-6">
+                                  <?php if ($data_pengaduan['image'] == '' ) : ?>
+                                    <h6 class="text-center font-italic mb-5 mt-5 pt-5" style="font-size: 100%;"><small class="">Tidak ada gambar</small></h6>
+                                    <h4 class="font-weight-bold font-italic text-center pt-5" style="font-size: 100%;"><span class="text-dark">Foto Tanggapan</span></h4>
+                                  <?php else : ?>
+                                      <img src="<?= base_url() ?>assets/uploads/<?= $data_pengaduan['image'] ?>" class="card-img-top h-100 mb-2">
+                                      <h4 class="font-weight-bold font-italic text-center" style="font-size: 100%;"><span class="text-dark">Foto Tanggapan</span></h4>
+                                  <?php endif; ?>
+                              </div>
+                          </div>
                         </div> <!-- subscribe area -->
                     </div>
                 </div> <!-- row -->

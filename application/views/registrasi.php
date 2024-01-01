@@ -16,7 +16,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="<?= base_url() ?>assets/tmp-admin/css/vertical-layout-light/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="<?= base_url() ?>assets/tmp-admin/images/favicon.png" />
+  <link rel="shortcut icon" href="<?= base_url() ?>assets/images/favicon.png" type="image/png">
 </head>
 
 <body>
@@ -29,9 +29,9 @@
               <div class="brand-logo">
                 <img src="<?= base_url() ?>assets/tmp-admin/images/logo.svg" alt="logo">
               </div>
-              <h4>New here?</h4>
+              <!-- <h4>New here?</h4> -->
               <?= $this->session->flashdata('pesan'); ?>
-              <h6 class="font-weight-light">Signing up is easy. It only takes a few steps</h6>
+              <h6 class="font-weight-light mb-3">Silahkan isi form register sebagai petugas dengan valid!</h6>
               <form class="user" method="post" action="<?= base_url('Auth/LoginController/registrasi'); ?>">
                 <div class="form-group">
                   <input type="text" class="form-control form-control-lg" id="exampleInputUsername1" placeholder="Nama" name="nama_petugas" value="<?= set_value('nama'); ?>">
@@ -53,7 +53,7 @@
                   <button type="submit" class="btn btn-block btn-primary">Daftar</button>
                 </div>
                 <div class="text-center mt-4 font-weight-light">
-                  Already have an account? <a href="<?= base_url('Auth/LoginController') ?>" class="text-primary">Login</a>
+                  Sudah memiliki akun petugas? <a href="<?= base_url('Auth/LoginController') ?>" class="text-primary">Login</a>
                 </div>
               </form>
             </div>

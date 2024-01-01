@@ -8,8 +8,8 @@
 
 						<?php foreach ($data_pengaduan as $dp) : ?>
 
-						<div class="col-md-4 mb-4">
-							<div class="card shadow mb-4 h-100" style="width: 18rem;">
+						<div class="col-md-4">
+							<div class="card shadow mb-4" style="width: 18rem;">
 								<div class="card-header py-3">
 									<h6 class="m-0 font-weight-bold text-primary"><?= $dp['nama'] ?></h6>
 								</div>
@@ -21,24 +21,24 @@
 									<p><?= $dp['notelp'] ?></p>
 									<span class="text-dark">Tanggal Pengaduan :</span>
 									<p><?= $dp['tgl_pengaduan'] ?></p>
-									<span class="text-dark">Tanggapan Pengaduan :</span>
-									<p><?= $dp['tanggapan'] ?></p>
 								</div>
-								<div class="row no-gutters mb-4">
+								<div class="row">
 									<div class="col">
-							      <div class="text-center">
-											<div class="btn btn-primary">
-			                  <a href="<?= base_url('Admin/TanggapanController/edit/' . $dp['id_tanggapan']) ?>" class="text text-white">Perbarui</a>
-			                </div>
-			              </div>
-							    </div>
-							    <div class="col">
-							    	<div class="text-center">
+							      <div class="text-center mb-2">
+									
 											<?= form_open('Admin/TanggapanController/tanggapan_pengaduan_selesai'); ?>
 											<input type="hidden" name="id" value="<?= $dp['id_pengaduan'] ?>">
-											<button class="btn btn-success" name="selesai">Selesai</button>
+											<button class="btn btn-primary" name="selesai">Selesai</button>
 											<?= form_close(); ?>
+
 										</div>
+							    </div>
+							    <div class="col">
+							     <div class="text-center mb-2">
+											<div class="btn btn-primary">
+			                  <a href="<?= base_url('Admin/TanggapanController/tanggapanEdit/' . $dp['id_tanggapan']) ?>" class="text text-white">Ubah</a>
+			                </div>
+			              </div>
 							    </div>
 								</div>
 								

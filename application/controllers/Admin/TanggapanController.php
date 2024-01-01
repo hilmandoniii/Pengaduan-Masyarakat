@@ -7,7 +7,7 @@ class TanggapanController extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		//Load Dependencies
+		//Load Dependenciess
 		is_logged_in();
 		if (!$this->session->userdata('level')) :
 			redirect('Auth/BlockedController');
@@ -75,6 +75,7 @@ class TanggapanController extends CI_Controller
 	{
 		$data['judul'] = 'Pengaduan Proses';
 		$data['data_pengaduan'] = $this->Pengaduan_m->data_pengaduan_proses()->result_array();
+
 		$petugas = $this->db->get_where('petugas', ['username' => $this->session->userdata('username')])->row_array();
 
 		if ($petugas == TRUE) :
@@ -87,7 +88,6 @@ class TanggapanController extends CI_Controller
 		$this->load->view('admin/pengaduan_proses',$data);
 		$this->load->view('_part/admin_footer');
 	}
-
 
 	public function tanggapan_detail()
 	{
@@ -121,7 +121,56 @@ class TanggapanController extends CI_Controller
 		endif;
 	}
 
-	//s
+	public function tanggapanEdit($id_tanggapan)
+	{
+		$petugas = $this->db->get_where('petugas', ['username' => $this->session->userdata('username')])->row_array();
+
+		if ($petugas == TRUE) :
+			$data['user'] = $petugas;
+		endif;
+
+	    $this->form_validation->set_rules('tanggapan', 'Tanggapan', 'trim|required', [
+            'required' => 'Tanggapan tidak boleh kosong!!'
+        ]);
+
+
+	    if ($this->form_validation->run() == FALSE) :
+	        // Validasi gagal, kembalikan ke halaman update dengan pesan error
+	        $data['judul'] = 'Update Tanggapan';
+	        $data['tanggapan'] = $this->db->get_where('tanggapan', ['id_tanggapan' => $id_tanggapan])->row_array();
+
+	       	$this->load->view('_part/admin_head',$data);
+			$this->load->view('_part/admin_navbar',$data);
+			$this->load->view('_part/admin_sidebar',$data);
+			$this->load->view('admin/edit_tanggapan',$data);
+			$this->load->view('_part/admin_footer');
+	    else :
+				// Validasi berhasil, lakukan proses update tanggapan
+			        $tanggapan_data = [
+			        	'tgl_tanggapan'		=> date('Y-m-d'),
+			            'tanggapan'			=> htmlspecialchars($this->input->post('tanggapan', true)),
+			        ];
+
+			        $update_result = $this->db->update('tanggapan', $tanggapan_data, ['id_tanggapan' => $id_tanggapan]);
+
+				if ($update_result) :
+					$this->session->set_flashdata('msg', '<div class="alert alert-primary" role="alert">Update Tanggapan berhasil</div>');
+			        redirect('Admin/TanggapanController/proses');
+				else :
+					 // Update gagal, redirect dengan pesan error
+			         $this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert">Gagal Update Tanggapan</div>');
+			         redirect('Admin/TanggapanController/tanggapanEdit');
+				endif;
+
+			
+		endif;
+
+	    	
+	}
+
+	
+
+	//sss
 	public function tambah_tanggapan()
 	{
 		$id_pengaduan = htmlspecialchars($this->input->post('id', true));
@@ -157,6 +206,7 @@ class TanggapanController extends CI_Controller
 					'id_pengaduan'		=> $id_pengaduan,
 					'tgl_tanggapan'		=> date('Y-m-d'),
 					'tanggapan'			=> htmlspecialchars($this->input->post('tanggapan', true)),
+					'image'				=> '',
 					'id_petugas'		=> $petugas['id_petugas'],
 				];
 
@@ -207,7 +257,9 @@ class TanggapanController extends CI_Controller
 			redirect('Admin/TanggapanController');
 		endif;
 	}
-	
+
+
+
 	// Fungsi Tanggapan Pengaduan Selesai
 	public function tanggapan_pengaduan_selesai()
 	{
@@ -248,14 +300,14 @@ class TanggapanController extends CI_Controller
 						Pengaduan berhasil diselesaikan!
 						</div>');
 
-					redirect('Admin/TanggapanController/tanggapan_proses');
+					redirect('Admin/TanggapanController/tanggapan_selesai');
 
 				else :
 					$this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert">
 						Pengaduan berhasil diselesaikan!
 						</div>');
 
-					redirect('Admin/TanggapanController/tanggapan_proses');
+					redirect('Admin/TanggapanController/tanggapan_selesai');
 				endif;
 
 			endif;
@@ -267,6 +319,7 @@ class TanggapanController extends CI_Controller
 			redirect('Admin/TanggapanController/tanggapan_proses');
 		endif;
 	}
+
 
 	public function detail_tanggapan($id)
 	{
@@ -306,5 +359,116 @@ class TanggapanController extends CI_Controller
 			redirect('Admin/TanggapanController');
 		endif;
 	}
+
+	public function proses()
+	{
+		$data['judul'] = 'Pengaduan Proses';
+		$data['data_pengaduan'] = $this->Tanggapan_m->proses_tanggapans()->result_array();
+
+		$petugas = $this->db->get_where('petugas', ['username' => $this->session->userdata('username')])->row_array();
+
+		if ($petugas == TRUE) :
+			$data['user'] = $petugas;
+		endif;
+
+		$this->load->view('_part/admin_head',$data);
+		$this->load->view('_part/admin_navbar',$data);
+		$this->load->view('_part/admin_sidebar',$data);
+		$this->load->view('admin/pengaduan_proses',$data);
+		$this->load->view('_part/admin_footer');
+	}
+
+	public function edit($id_tanggapan)
+	{
+		$data['judul'] = 'Update Tanggapan';
+	    $data['tanggapan'] = $this->db->get_where('tanggapan', ['id_tanggapan' => $id_tanggapan])->row_array();
+		$petugas = $this->db->get_where('petugas', ['username' => $this->session->userdata('username')])->row_array();
+		
+
+		if ($petugas == TRUE) :
+			$data['user'] = $petugas;
+		endif;
+
+	    $this->form_validation->set_rules('tanggapan', 'Tanggapan', 'trim|required', [
+            'required' => 'Tanggapan tidak boleh kosong!!'
+        ]);
+
+	   $this->form_validation->set_rules('image', 'Image Tanggapan', 'trim');
+	    if ($this->form_validation->run() == FALSE) :
+	        // Validasi gagal, kembalikan ke halaman update dengan pesan errorss
+
+	       	$this->load->view('_part/admin_head',$data);
+			$this->load->view('_part/admin_navbar',$data);
+			$this->load->view('_part/admin_sidebar',$data);
+			$this->load->view('admin/edit_tanggapan',$data);
+			$this->load->view('_part/admin_footer');
+	    else :
+
+	    	// Parameter Nama Foto
+			$upload_foto = $this->upload_foto('image');
+
+			if ($upload_foto == FALSE) :
+				$this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert">
+					Upload foto Profile gagal, hanya png,jpg dan jpeg yang dapat di upload!</div>');
+
+				redirect('Admin/TanggapanController/edit');
+			else :
+
+				// Path dan Params Delete File
+				$path = './assets/uploads/' . $data['tanggapan']['image'];
+				unlink($path);
+
+				// Validasi berhasil, lakukan proses update tanggapan
+				$tanggapan_data = [
+					'tgl_tanggapan'     => empty($data['tanggapan']['tgl_tanggapan']) ? date('Y-m-d') : $data['tanggapan']['tgl_tanggapan'],
+					'tanggapan'			=> htmlspecialchars($this->input->post('tanggapan', true)),
+					'image' 			=> $upload_foto
+					
+				];
+
+				$update_tanggapan = $this->db->update('tanggapan', $tanggapan_data, ['id_tanggapan' => $id_tanggapan]);
+
+				if ($update_tanggapan) :
+					$this->session->set_flashdata('msg', '<div class="alert alert-primary" role="alert">Update Tanggapan berhasil</div>');
+					redirect('Admin/TanggapanController/proses');
+				else :
+							 // Update gagal, redirect dengan pesan error
+					$this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert">Gagal Update Tanggapan</div>');
+					redirect('Admin/TanggapanController/edit');
+
+				endif;
+
+			endif;
+
+
+		endif;
+
+	    	
+	}
+
+	// Fungsi Upload Foto
+	private function upload_foto($foto)
+	{
+		$config['upload_path']          = './assets/uploads/';
+		$config['allowed_types']        = 'gif|jpg|png|jpeg|bmp';
+		$config['max_size']             = 3000;
+		$config['remove_spaces']        = TRUE;
+		$config['detect_mime']        	= TRUE;
+		$config['mod_mime_fix']        	= TRUE;
+		$config['encrypt_name']        	= TRUE;
+		$config['max_width'] = '1024';
+		$config['max_height'] = '1000';
+
+		$this->upload->initialize($config);
+		if (!$this->upload->do_upload($foto)) :
+			return FALSE;
+		else :
+			return $this->upload->data('file_name');
+		endif;
+	}
+
+	
+
+	
 
 }

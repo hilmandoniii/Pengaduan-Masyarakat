@@ -7,13 +7,10 @@ Cara buka website Pengaduan Masyarakat
 
 	1. Akun Admin Pertama
 	username	: adminhil
-	password	: 654321
-	
-	2. Akun Admin Kedua
-	username	: adminhilmans
 	password	: 123456
+	
 
-	3. Akun Petugas
+	2. Akun Petugas
 	username	: petugashilman
 	password	: 123456
 

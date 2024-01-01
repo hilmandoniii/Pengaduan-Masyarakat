@@ -16,6 +16,8 @@ class PengaduanController extends CI_Controller
 	{
 		$data['judul'] = 'Pengaduan';
 
+		$this->form_validation->set_rules('nik', 'Nik', 'numeric|required|exact_length[16]', ['required' => '%s harus diisi', 'numeric' => '%s harus angka', 'exact_length' => '%s Harus 16 karakter']);
+
 		$this->form_validation->set_rules('nama', 'Nama Lengkap','required', [
             'required' => 'Nama Belum diis!!'
         ]);
@@ -43,8 +45,6 @@ class PengaduanController extends CI_Controller
 
 		$this->form_validation->set_rules('foto', 'Foto Pengaduan', 'trim');
 
-
-
 		if ($this->form_validation->run() == FALSE) :
 			$this->load->view('tambah_pengaduan',$data);
 			$this->load->view('_part/landing_footer');
@@ -61,6 +61,7 @@ class PengaduanController extends CI_Controller
 			else :
 
 				$params = [
+					'nik'				=> htmlspecialchars($this->input->post('nik', true)),
 					'tgl_pengaduan'  	=> date('Y-m-d'),
 					'nama'				=> htmlspecialchars($this->input->post('nama', true)),
 					'email'				=> htmlspecialchars($this->input->post('email', true)),
@@ -123,6 +124,36 @@ class PengaduanController extends CI_Controller
 		$this->load->view('data_tanggapan',$data);
 		$this->load->view('_part/landing_footer');
 		
+	}
+
+	public function detail_pengaduan_masyarakat($id)
+	{
+
+		$cek_data = $this->db->get_where('aduan', ['id_pengaduan' => htmlspecialchars($id)])->row_array();		
+
+		if (!empty($cek_data)) :
+
+			$data['judul'] = 'Detail Pengaduan';
+
+			$data['data_pengaduan'] = $this->Pengaduan_m->data_detail_pengaduan_tanggapan(htmlspecialchars($id))->row_array();
+			if ($data['data_pengaduan']) :
+				$this->load->view('dp_masyarakat',$data);
+				$this->load->view('_part/landing_footer');
+			else :
+				$this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert">
+					Data tidak ada
+					</div>');
+
+				redirect('Admin/TanggapanController');
+			endif;
+
+		else :
+			$this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert">
+				data tidak ada
+				</div>');
+
+			redirect('Admin/TanggapanController');
+		endif;
 	}
 
 	

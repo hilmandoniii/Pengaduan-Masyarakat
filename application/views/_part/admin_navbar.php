@@ -1,7 +1,7 @@
 <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo" href="<?= base_url('Admin/DashboardController') ?>"><img src="<?= base_url() ?>assets/images/favicon.png" class="mr-2" alt="logo"/>PENGADUAN</a>
+        <a class="navbar-brand brand-logo" href="<?= base_url('Admin/DashboardController') ?>"><img src="<?= base_url() ?>assets/images/favicon.png" class="mr-2" alt="logo"/>LADUMAS</a>
         <a class="navbar-brand brand-logo-mini" href="<?= base_url('Admin/DashboardController') ?>"><img src="<?= base_url() ?>assets/images/favicon.png" class="mr-2" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
@@ -11,7 +11,8 @@
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <?= $this->session->userdata('username'); ?>
+              <?= $user['nama_petugas']; ?>
+              <!-- <?= $this->session->userdata('username'); ?> -->
               <img src="<?= base_url('assets/uploads/' . $user['foto_profile']) ?>" alt="profile"/>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">

@@ -15,8 +15,17 @@ class ChangePasswordController extends CI_Controller {
 		$data['judul'] = 'Ubah Password';
 
 		$this->form_validation->set_rules('current_password', 'Password Sekarang', 'trim|required');
-		$this->form_validation->set_rules('new_password', 'Password Baru', 'trim|required|min_length[6]|max_length[15]|matches[confirm_password]');
-		$this->form_validation->set_rules('confirm_password', 'Konfirmasi Password Baru', 'trim|required|min_length[6]|max_length[15]|matches[new_password]');
+		$this->form_validation->set_rules('new_password', 'Password Baru', 'trim|required|min_length[6]|max_length[15]|matches[confirm_password]', [
+            'required' => 'Password Belum diisi!!',
+            'min_length' => 'Password Min 6 angka',
+            'matches' => 'Password tidak sesuai'
+        ]);
+		$this->form_validation->set_rules('confirm_password', 'Konfirmasi Password Baru', 'trim|required|min_length[6]|max_length[15]|matches[new_password]', [
+            'required' => 'Password Belum diisi!!',
+            'min_length' => 'Password Min 6 angka',
+            'matches' => 'Password tidak sesuai'
+
+        ]);
 
 		$petugas = $this->db->get_where('petugas', ['username' => $this->session->userdata('username')])->row_array();
 

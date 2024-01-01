@@ -6,7 +6,7 @@
               <div class="row">
                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                   <h3 class="font-weight-bold">Welcome <?= $user['level']; ?> - <?= $user['nama_petugas']; ?> </h3>
-                  <!-- <h6 class="font-weight-normal mb-0">All systems are running smoothly! You have <span class="text-primary">3 unread alerts!</span></h6> -->
+                  <!-- <h6 class="font-weight-normal mb-0">All systems are running smoothly! You have <span class="text-primary">3 unread alerts!</span></h6>s -->
                 </div>
               </div>
             </div>
@@ -68,6 +68,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Semua Pengaduan</h4>
+                  <?= $this->session->flashdata('msg'); ?>
                   <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                       <thead>
@@ -112,7 +113,10 @@
                             <?php if ($dp['status'] == '0' or $dp['status'] == 'proses') : ?>
                               <small>Tidak ada aksi</small>
                             <?php else : ?>
-                            <a href="<?= base_url('Admin/TanggapanController/detail_tanggapan/' . $dp['id_pengaduan']) ?>" class="badge badge-primary">Lihat Detail</a>
+                              
+                              <a href="<?= base_url('Admin/TanggapanController/detail_tanggapan/' . $dp['id_pengaduan']) ?>" class="badge badge-primary">Lihat Detail</a>
+                              <a href="<?= base_url('Admin/DashboardController/hapus_data/' . $dp['id_pengaduan']) ?>" class="badge badge-danger">Hapus</a>
+
                             <?php endif; ?>
                           </th>
 
@@ -128,7 +132,7 @@
             </div>
           </div>
           <?php endif; ?>
-            <?php // end Tambah Akses Admin Petugas
+            <?php // end Tambah Akses Admin Petugass
             ?>
           
         </div>

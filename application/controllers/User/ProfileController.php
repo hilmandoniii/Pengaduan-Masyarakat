@@ -28,6 +28,7 @@ class ProfileController extends CI_Controller {
 		$this->load->view('_part/admin_footer');
 	}
 
+
 	public function editProfil($id)
 	{
 		$id_petugas = htmlspecialchars($id);
@@ -48,6 +49,11 @@ class ProfileController extends CI_Controller {
 			$this->form_validation->set_rules('nama', 'Nama', 'trim|required|alpha_numeric_spaces', [
             'required' => 'Nama Belum diisi!!'
         	]);
+
+        	$this->form_validation->set_rules('username', 'Username', 'trim|required|alpha_numeric_spaces', [
+            'required' => 'Nama Belum diisi!!'
+        	]);
+
 			$this->form_validation->set_rules('no_telp', 'No Telepon','required|numeric|min_length[10]|max_length[13]', [
             'required' => 'No Telepon Belum diisi!!',
             'numeric' => 'No Telepon Harus Angka',
@@ -80,6 +86,7 @@ class ProfileController extends CI_Controller {
 
 					$params = [
 						'nama_petugas'			=> htmlspecialchars($this->input->post('nama', TRUE)),
+						'username'			=> htmlspecialchars($this->input->post('username', TRUE)),
 						'telp'					=> htmlspecialchars($this->input->post('no_telp', TRUE)),
 						'foto_profile'			=> $upload_foto,
 					];
@@ -113,14 +120,6 @@ class ProfileController extends CI_Controller {
 		endif;
 	}
 
-	public function edit_profile()
-	{
-		$this->load->view('_part/admin_head');
-		$this->load->view('_part/admin_navbar');
-		$this->load->view('_part/admin_sidebar');
-		$this->load->view('admin/edit_profile');
-		$this->load->view('_part/admin_footer');
-	}
 
 	// Fungsi Upload Foto
 	private function upload_foto($foto)

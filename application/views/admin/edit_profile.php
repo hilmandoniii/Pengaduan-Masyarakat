@@ -15,6 +15,11 @@
                       <?= form_error('nama','<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                     <div class="form-group">
+                      <label for="username">Username</label>
+                      <input type="text" class="form-control" id="username" placeholder="Username" name="username" value="<?= $petugas['username'] ?>">
+                      <?= form_error('nama','<small class="text-danger pl-3">', '</small>'); ?>
+                    </div>
+                    <div class="form-group">
                       <label for="exampleInputEmail3">No Telp</label>
                       <input type="text" class="form-control" id="exampleInputEmail3" placeholder="no_telp" name="no_telp" value="<?= $petugas['telp'] ?>">
                       <?= form_error('no_telp','<small class="text-danger pl-3">', '</small>'); ?>
@@ -43,4 +48,4 @@
             </div>
           </div>
         </div>
-        <!-- content-wrapper ends -->
+        <!-- content-wrapper endss -->

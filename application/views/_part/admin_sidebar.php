@@ -29,13 +29,14 @@
             <div class="collapse" id="form-elements">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"><a class="nav-link" href="<?= base_url('Admin/TanggapanController'); ?>">Pengaduan Masuk</a></li>
-                <li class="nav-item"><a class="nav-link" href="<?= base_url('Admin/TanggapanController/tanggapan_proses'); ?>">Pengaduan Proses</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= base_url('Admin/TanggapanController/proses'); ?>">Pengaduan Proses</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= base_url('Admin/TanggapanController/tanggapan_tolak'); ?>">Pengaduan Tolak</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= base_url('Admin/TanggapanController/tanggapan_selesai'); ?>">Pengaduan Selesai</a></li>
+                <!-- <li class="nav-item"><a class="nav-link" href="<?= base_url('Admin/TanggapanController/proses'); ?>">Pengaduan Testing</a></li> -->
               </ul>
             </div>
           </li>
-          <?php // Tambah Akses Admin Petugas
+          <?php // Tambah Akses Admin Petugass
             ?>
             <?php if ($this->session->userdata('level') == 'admin') : ?>
           <li class="nav-item">

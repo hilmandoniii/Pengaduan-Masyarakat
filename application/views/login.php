@@ -16,7 +16,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="<?= base_url() ?>assets/tmp-admin/css/vertical-layout-light/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="<?= base_url() ?>assets/tmp-admin/images/favicon.png" />
+  <link rel="shortcut icon" href="<?= base_url() ?>assets/images/favicon.png" type="image/png">
 </head>
 
 <body>
@@ -46,7 +46,7 @@
                   <button type="submit" class="btn btn-block btn-primary">Masuk</button>
                 </div>
                 <div class="text-center mt-4 font-weight-light">
-                  Tidak Punya Akun ? <a href="<?= base_url('Auth/LoginController/registrasi') ?>" class="text-primary">Register</a>
+                  Daftar sebagai petugas? <a href="<?= base_url('Auth/LoginController/registrasi') ?>" class="text-primary">Register</a>
                 </div>
                 <div class="text-center mt-2 font-weight-light">
                   Kembali ke <a href="<?= base_url('LandingController') ?>" class="text-primary">Beranda</a>

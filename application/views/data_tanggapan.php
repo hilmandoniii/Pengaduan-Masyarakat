@@ -131,25 +131,24 @@
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                
+                                                <th>NIK</th>
                                                 <th>Nama</th>
                                                 <th>E-mail</th>
-                                                <th>Judul Pengaduan</th>
-                                                <th>Tanggal Pengaduan</th>
+                                                
                                                 <th>Status</th>
                                                 <th>Tanggapan</th>
                                                 <th>Tanggal Tanggapan</th>
+                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             
                                             <?php foreach ($data_pengaduan as $dp) : ?>
                                             <tr>
-                                                
+                                                <td><?= $dp['nik']; ?></td>
                                                 <td><?= $dp['nama']; ?></td>
                                                 <td><?= $dp['email']; ?></td>
-                                                <td><?= $dp['judul_pengaduan']; ?></td>
-                                                <td><?= $dp['tgl_pengaduan']; ?></td>
+                                                
                                                 <td>
                                                     <?php
                                                       if ($dp['status'] == '0') :
@@ -165,8 +164,31 @@
                                                       endif;
                                                     ?>
                                                 </td>
-                                                <td><?= $dp['tanggapan'] ?></td>
-                                                <td><?= $dp['tgl_tanggapan'] ?></td>
+                                                <td>
+                                                    <?php if ($dp['status'] == '0') : ?>
+                                                      <small>Belum di Tanggapi</small>
+                                                    
+                                                    <?php else : ?>
+                                                        <?= $dp['tanggapan'] ?>
+                                                    <?php endif; ?>
+                                                        
+                                                </td>
+                                                <td>
+                                                    <?php if ($dp['status'] == '0') : ?>
+                                                      <small>Belum di Tanggapi</small>
+                                                    <?php else : ?>
+                                                      <?= $dp['tgl_tanggapan']; ?>
+                                                    <?php endif; ?>
+                                                      
+                                                </td>
+                                                <td>
+                                                    <?php if ($dp['status'] == '0' or $dp['status'] == 'proses') : ?>
+                                                      <small>Tidak ada aksi</small>
+                                                    <?php else : ?>
+                                                      <a href="<?= base_url('PengaduanController/detail_pengaduan_masyarakat/' . $dp['id_pengaduan']) ?>" class="badge badge-primary">Lihat Detail</a>
+                                                    <?php endif; ?>
+                                                </td>
+                                                
                                             </tr>
                                             <?php endforeach; ?>
                                             

@@ -11,18 +11,24 @@ class Tanggapan_m extends CI_Model {
 		return $this->db->insert($this->table, $data);
 	}
 
-	public function get_tanggapan_by_id($id) 
-	{
-        // Fungsi untuk mendapatkan tanggapan berdasarkan ID pengaduan
-        $query = $this->db->get_where('tanggapan', array('id_pengaduan' => $id));
-        return $query->row_array();
+	public function get_tanggapan($id_pengaduan)
+    {
+    	return $this->db->get_where($this->table, ['id_pengaduan' => $id_pengaduan]);
+        
     }
 
-    public function update_tanggapan($data) 
-    {
-        // Fungsi untuk mengupdate tanggapan
-        $this->db->where('id_pengaduan', $data['id_pengaduan']);
-        return $this->db->update('tanggapan', $data);
-    }
+    public function data_tanggapan_masyarakat_id($id)
+	{
+		return $this->db->get_where($this->table, ['id_tanggapan' => $id]);
+	}
+
+	public function proses_tanggapans()
+	{
+		$this->db->select('*,aduan.*');
+		$this->db->from($this->table);
+		$this->db->join('aduan', 'aduan.id_pengaduan = tanggapan.id_pengaduan');
+		$this->db->where('status', 'proses');
+		return $this->db->get();
+	}
 
 }
